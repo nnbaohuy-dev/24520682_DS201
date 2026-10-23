@@ -80,7 +80,7 @@ class GoogleNet(nn.Module):
         super().__init__()
         
         self.conv_1 = nn.Conv2d(
-            in_channels=1,
+            in_channels=3,
             out_channels=64,
             kernel_size=(7, 7),
             stride=(2, 2),
@@ -237,8 +237,6 @@ class GoogleNet(nn.Module):
 
 
     def forward(self, images: torch.Tensor):
-        images = images.unsqueeze(1)
-
         features = self.conv_1(images)
         features = self.pooling_1(features)
 
